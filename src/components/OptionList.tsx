@@ -1,5 +1,6 @@
 import React from 'react';
-import { FlatList, ListRenderItem, StyleSheet, View } from 'react-native';
+import { FlatList, ListRenderItem, StyleSheet, Text, View } from 'react-native';
+import ListHeader from './ListHeader';
 import OptionListCell from './OptionListCell';
 
 interface OptionListProps {
@@ -12,9 +13,12 @@ const OptionList = ({ options }: OptionListProps) => {
 
   return (
     <View style={styles.container}>
+      <ListHeader title={"Options"} />
       <FlatList 
+        columnWrapperStyle={{justifyContent: 'center'}}
         data={options}
         renderItem={renderItem}
+        numColumns={2}
       />
     </View>
   )
@@ -22,10 +26,9 @@ const OptionList = ({ options }: OptionListProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 1,
-    borderColor: 'blue',
-    height: 100,
     flex: 1,
+    width: "100%",
+    margin: 5,
   },
 });
 
